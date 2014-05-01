@@ -53,7 +53,7 @@ coverage.xml
 docs/_build/
 
 # Twitter API secrets
-*/secrets.py
+secrets.py
 
 # no vim swapfiles
 *.swp
