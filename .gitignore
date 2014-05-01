@@ -52,3 +52,8 @@ coverage.xml
 # Sphinx documentation
 docs/_build/
 
+# Twitter API secrets
+*/secrets.py
+
+# no vim swapfiles
+*.swp
