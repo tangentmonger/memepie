@@ -55,5 +55,8 @@ docs/_build/
 # Twitter API secrets
 secrets.py
 
+# Application log files
+*.log
+
 # no vim swapfiles
 *.swp
