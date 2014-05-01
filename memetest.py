@@ -41,10 +41,11 @@ class MemeTest(unittest.TestCase):
         self.assertEqual(m.get_body(), "foo-bar")
         self.assertEqual(m.get_exceptions(), "-baz")
 
-    def test_apostrophes_are_ok(self):
-        m = Meme("amn't * -isn't")
-        self.assertEqual(m.get_body(), "amn't *")
+    def test_punctuation_is_ok(self):
+        m = Meme("amn't,. * -isn't")
+        self.assertEqual(m.get_body(), "amn't,. *")
         self.assertEqual(m.get_exceptions(), "-isn't")
- 
+    
+
 if __name__ == "__main__":
     unittest.main()

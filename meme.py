@@ -20,7 +20,7 @@ class Meme:
     def _clean_meme(self):
         #remove anything weirdlooking from the query. 
         #allowed: alphanumeric, space, hyphen, asterisk, plus, apostrophe
-        temp = re.sub("[^A-Za-z0-9 *+'-]+", "", self.raw_meme)
+        temp = re.sub("[^A-Za-z0-9 ,.*+'-]+", "", self.raw_meme)
         temp = re.sub(' +', ' ', temp.strip())
         return temp
 
