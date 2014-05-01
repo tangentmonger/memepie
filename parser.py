@@ -10,7 +10,7 @@ class Parser():
         for text in texts:
             match = re.search(regex, text, re.IGNORECASE)
             if match:
-                word = match.groups()[0] #assumption: there was exactly one match
+                word = match.groups()[0].lower() #assumption: there was exactly one match
                 if word in words:
                     words[word] += 1
                 else:

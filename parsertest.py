@@ -20,7 +20,12 @@ class ParserTest(unittest.TestCase):
         m = Meme("all your * -base")
         t = ["foo", "bar", "baz"]
         self.assertEqual(p.collate_words(m, t), {})
-        
 
+    def test_converts_to_lowercase(self):
+        p = Parser()
+        m = Meme("all your * -base")
+        t = ["ALL YOUR DATA"]
+        self.assertEqual(p.collate_words(m, t), {"data":1})
+        
 if __name__ == "__main__":
     unittest.main()
