@@ -1,4 +1,5 @@
 from meme import Meme
+from result import Result
 import re
 
 class Parser():
@@ -6,16 +7,12 @@ class Parser():
 
     def collate_words(self, meme, texts):
         regex = self._format_regex(meme)
-        words = {}
+        result = Result()
         for text in texts:
             match = re.search(regex, text, re.IGNORECASE)
             if match:
-                word = match.groups()[0].lower() #assumption: there was exactly one match
-                if word in words:
-                    words[word] += 1
-                else:
-                    words[word] = 1
-        return words            
+                result.add(match.groups()[0].lower()) #assumption: there was exactly one match
+        return result 
     
     def _format_regex(self, meme):
         #assumes a valid meme
