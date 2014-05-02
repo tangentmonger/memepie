@@ -2,6 +2,7 @@ import unittest
 from parser import Parser
 from meme import Meme
 from result import Result
+from source import Source
 
 class ParserTest(unittest.TestCase):
 
@@ -18,20 +19,23 @@ class ParserTest(unittest.TestCase):
     def test_collates_words(self):
         p = Parser()
         m = Meme("all your * -base")
-        t = ["all your cake", "all your cake", "all your data"]
-        self.assertEqual(p.collate_words(m, t).get_list(), [("cake",2), ("data",1)])
+        #t = ["all your cake", "all your cake", "all your data"]
+        s = [Source("", "all your cake", ""),
+                Source("", "all your cake", ""), 
+                Source("", "all your data", ""]
+        self.assertEqual(p.collate_words(m, s).get_list(), [("cake",2), ("data",1)])
 
     def test_handles_no_matches(self):
         p = Parser()
         m = Meme("all your * -base")
-        t = ["foo", "bar", "baz"]
-        self.assertEqual(p.collate_words(m, t).get_list(), [])
+        s = [Source("", "foo", ""), Source("", "bar", ""), Source("", "baz","")]
+        self.assertEqual(p.collate_words(m, s).get_list(), [])
 
     def test_converts_to_lowercase(self):
         p = Parser()
         m = Meme("all your * -base")
-        t = ["ALL YOUR DATA"]
-        self.assertEqual(p.collate_words(m, t).get_list(), [("data",1)])
+        s = ["ALL YOUR DATA"]
+        self.assertEqual(p.collate_words(m, s).get_list(), [("data",1)])
         
 if __name__ == "__main__":
     unittest.main()
