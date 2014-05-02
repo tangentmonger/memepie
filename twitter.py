@@ -3,7 +3,9 @@ from meme import Meme
 import urllib.parse
 from TwitterSearch import *
 from secrets import Secrets
+from source import Source
 import os
+import datetime
 
 class Twitter:
     """Interface to Twitter search API"""
@@ -12,11 +14,12 @@ class Twitter:
     queries_logfile = "queries.log"
     errors_logfile = "errors.log"
 
-    def get_texts(self, meme, number):
+    def get_sources(self, meme, number):
         with open(self.queries_logfile, 'a') as log:
+            print(datetime.datetime.now().strftime('%d/%m/%Y %H:%M'), file=log)
             print(" ".join([meme.get_body(), meme.get_exceptions()]), file=log, end='\n')
 
-        texts = []
+        sources = []
         try:
             tso = TwitterSearchOrder() # create a TwitterSearchOrder object
             tso.setSearchURL(self._format_query(meme))
@@ -34,19 +37,20 @@ class Twitter:
             tweets = ts.searchTweets(tso)
             
             retries = 0;
-            while len(texts) < number and retries < 5:
+            while len(sources) < number and retries < 5:
                 for tweet in tweets['content']['statuses']:
-                    texts.append(tweet['text'])
+                    sources.append(Source(tweet['user']['name'], tweet['text'], tweet['id_str']))
                     #print(tweet['text']) #there's a lot of strange characters coming in here
                 tweets = ts.searchNextResults()
                 retries += 1
 
         except TwitterSearchException as e:
             with open(self.errors_logfile, 'a') as log:
+                print(datetime.datetime.now().strftime('%d/%m/%Y %H:%M'), file=log)
                 print(" ".join([meme.get_body(), meme.get_exceptions()]), file=log, end='\n')
                 print(e, file=log, end='\n')
 
-        return texts
+        return sources
 
     def _format_query(self, meme):
         #assumption: the meme is valid
