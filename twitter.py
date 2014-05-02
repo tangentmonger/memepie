@@ -49,6 +49,7 @@ class Twitter:
         return texts
 
     def _format_query(self, meme):
+        #assumption: the meme is valid
         formatted_query = '"%s" %s' % (meme.get_body(), meme.get_exceptions())
         parameters = urllib.parse.urlencode({"q":formatted_query})
         return "?%s" % parameters

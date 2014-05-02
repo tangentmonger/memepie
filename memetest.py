@@ -33,7 +33,7 @@ class MemeTest(unittest.TestCase):
         self.assertFalse(m.test_valid())
 
     def test_invalid_characters(self):
-        m = Meme("ok <>\"(){}[]")
+        m = Meme("ok <>\"(){}[],.")
         self.assertEqual(m.get_body(), "ok")
 
     def test_hypen_is_not_exception(self):
@@ -41,9 +41,9 @@ class MemeTest(unittest.TestCase):
         self.assertEqual(m.get_body(), "foo-bar")
         self.assertEqual(m.get_exceptions(), "-baz")
 
-    def test_punctuation_is_ok(self):
-        m = Meme("amn't,. * -isn't")
-        self.assertEqual(m.get_body(), "amn't,. *")
+    def test_apostrophe_is_ok(self):
+        m = Meme("amn't * -isn't")
+        self.assertEqual(m.get_body(), "amn't *")
         self.assertEqual(m.get_exceptions(), "-isn't")
     
 

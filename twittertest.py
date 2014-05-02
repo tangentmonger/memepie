@@ -11,6 +11,11 @@ class TwitterTest(unittest.TestCase):
         m = Meme("all your * -base")
         self.assertEqual(t._format_query(m), "?q=%22all+your+%2A%22+-base")
 
+    def test_generates_valid_weird_search(self):
+        t = Twitter()
+        m = Meme("amn't foo-bar * -base")
+        self.assertEqual(t._format_query(m), "?q=%22amn%27t+foo-bar+%2A%22+-base")
+   
     def test_gets_texts(self):
         t = Twitter()
         m = Meme("all your * -base")

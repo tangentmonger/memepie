@@ -11,8 +11,8 @@ class ParserTest(unittest.TestCase):
 
     def test_generates_valid_weird_regex(self):
         p = Parser()
-        m = Meme("amn't, foo-bar * -isn't")
-        self.assertEqual(p._format_regex(m), "amn't, foo-bar ([\\w'\\-]+)")
+        m = Meme("amn't foo-bar * -isn't")
+        self.assertEqual(p._format_regex(m), "amn't foo-bar ([\\w'\\-]+)")
 
     def test_collates_words(self):
         p = Parser()
