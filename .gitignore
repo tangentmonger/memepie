@@ -60,3 +60,6 @@ secrets.py
 
 # no vim swapfiles
 *.swp
+
+# no virtualenv files
+venv
