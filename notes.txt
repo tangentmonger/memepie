@@ -12,6 +12,6 @@ pip install TwitterSearch
 
 Test locally:
 foreman start
-(uses Procfile to determine what to do. Point browser at 0.0.0.0:500 to see results)
+(uses Procfile to determine what to do. Point browser at 0.0.0.0:5000 to see results)
 
 
