@@ -1,0 +1,17 @@
+Typical workflow using virtualenv:
+
+Created virtual environment:
+virtualenv3.4 -p path-to-python3.4 venv
+
+Activate virtual environment:
+source venv/bin/activate
+
+Install packages:
+pip install Flask
+pip install TwitterSearch
+
+Test locally:
+foreman start
+(uses Procfile to determine what to do. Point browser at 0.0.0.0:500 to see results)
+
+
