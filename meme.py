@@ -8,16 +8,16 @@ class Meme:
 
     def get_body(self):
         #remove exceptions, keep the remaining valid characters
-        return re.sub("\\s+\\-[\\w']+", "", self._clean_meme())
+        return re.sub("\\s+\\-[\\w']+", "", self.get_clean_meme())
        
     def get_exceptions(self):
-        return "".join(re.findall("\\s+\\-[\\w']+", self._clean_meme())).strip()
+        return "".join(re.findall("\\s+\\-[\\w']+", self.get_clean_meme())).strip()
 
     def test_valid(self):
         #considered valid if we have something sensible left after parsing
         return re.match('^[^*]*\*[^*]*$', self.get_body()) is not None
     
-    def _clean_meme(self):
+    def get_clean_meme(self):
         #remove anything weirdlooking from the query. 
         #allowed: alphanumeric, space, hyphen, asterisk, plus, apostrophe
         #not allowed: comma, period (Twitter search treats these as separators)

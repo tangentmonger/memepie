@@ -8,6 +8,10 @@ class MemeTest(unittest.TestCase):
         m = Meme("all your * -base")
         self.assertEqual(m.raw_meme, "all your * -base")
         
+    def test_valid_meme_has_clean_meme(self):
+        m = Meme("all your., * -base")
+        self.assertEqual(m.get_clean_meme(), "all your * -base")
+    
     def test_valid_meme_has_body(self):
         m = Meme("all your * -base")
         self.assertEqual(m.get_body(), "all your *")
