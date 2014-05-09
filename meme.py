@@ -13,7 +13,7 @@ class Meme:
     def get_exceptions(self):
         return "".join(re.findall("\\s+\\-[\\w']+", self.get_clean_meme())).strip()
 
-    def test_valid(self):
+    def is_valid(self):
         #considered valid if we have something sensible left after parsing
         return re.match('^[^*]*\*[^*]*$', self.get_body()) is not None
     

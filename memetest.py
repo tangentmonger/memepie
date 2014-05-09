@@ -22,7 +22,7 @@ class MemeTest(unittest.TestCase):
  
     def test_valid_meme_is_valid(self):
         m = Meme("all your * -base")
-        self.assertTrue(m.test_valid())
+        self.assertTrue(m.is_valid())
 
     def test_invalid_meme_has_raw_meme(self):
         m = Meme("nothing here")
@@ -30,11 +30,11 @@ class MemeTest(unittest.TestCase):
 
     def test_invalid_meme_is_invalid(self):
         m = Meme("nothing here")
-        self.assertFalse(m.test_valid())
+        self.assertFalse(m.is_valid())
 
     def test_two_stars_is_invalid(self):
         m = Meme("* into *")
-        self.assertFalse(m.test_valid())
+        self.assertFalse(m.is_valid())
 
     def test_invalid_characters(self):
         m = Meme("ok <>\"(){}[],.")
