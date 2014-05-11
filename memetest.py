@@ -50,6 +50,17 @@ class MemeTest(unittest.TestCase):
         self.assertEqual(m.get_body(), "amn't *")
         self.assertEqual(m.get_exceptions(), "-isn't")
     
+    def test_get_parts_valid_1(self):
+        m = Meme("* foo")
+        self.assertEqual(m.get_parts(), ["", "foo"])
+
+    def test_get_parts_valid_2(self):
+        m = Meme("foo *")
+        self.assertEqual(m.get_parts(), ["foo", ""])
+    
+    def test_get_parts_valid_3(self):
+        m = Meme("foo * bar")
+        self.assertEqual(m.get_parts(), ["foo", "bar"])
 
 if __name__ == "__main__":
     unittest.main()

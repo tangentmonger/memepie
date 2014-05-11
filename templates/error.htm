@@ -1,0 +1,11 @@
+{% import 'macros.htm' as macros %}
+
+{{ macros.header() }}
+{{ macros.topmatter() }}
+        <p>The meme <strong>{{g.cleanQuery}}</strong> {{g.errorMessage}}. Please alter the meme and try again.</p>
+
+{{ macros.form(g) }}
+{{ macros.footer() }}
+
+
+

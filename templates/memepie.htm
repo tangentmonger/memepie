@@ -1,0 +1,71 @@
+{% import 'macros.htm' as macros %}
+
+{{ macros.header() }}
+        <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+        <script type="text/javascript">
+            google.load("visualization", "1", {packages:["corechart"]});
+            
+            {% for star in g.pie_data %}
+            var chart{{loop.index0}};
+            var data{{loop.index0}};
+            
+            google.setOnLoadCallback(drawChart{{loop.index0}});
+
+            function selectHandler{{loop.index0}}() {
+                var selection = chart{{loop.index0}}.getSelection();
+                
+                word =  data{{loop.index0}}.getValue(selection[0].row, 0);
+                newquery = "{{g.clean_query|safe}}" + " -"+word;
+                
+                window.location.href=("memepie.htm?meme="+newquery)
+
+            }
+
+
+
+            function drawChart{{loop.index0}}() {
+                data{{loop.index0}} = google.visualization.arrayToDataTable([
+                        ['Word', 'Frequency'],
+
+
+
+                    {{ g.pie_data[loop.index0]|safe }}
+
+                   ]);
+
+                 var options = {
+                  title: "",
+                  chartArea: {left:0, top:10, width:"100%", height:"90%"},
+                  legend: {position:"bottom"},
+                  pieSliceText: "label"
+                     };
+                 chart{{loop.index0}} = new google.visualization.PieChart(document.getElementById('chart_div{{loop.index0}}'));
+                chart{{loop.index0}}.draw(data{{loop.index0}}, options);
+
+                google.visualization.events.addListener(chart{{loop.index0}}, 'select', selectHandler{{loop.index0}});
+
+             }
+         {% endfor %}
+
+    {{ macros.topmatter() }}
+
+ 
+
+    <div align="center">
+    
+    {% for part in g.meme_parts %}
+    
+    <h1>{{part}}</h1>
+   
+    
+    {% if g.pie_data[loop.index0] is defined %}
+    <div id="chart_div{{ loop.index0 }}" style="width: *; height: 400px"></div>
+    {% endif %}
+
+    {% endfor %}
+    
+    {{g.meme_exceptions}}
+    </div>
+    {{ macros.tweetThis(g) }}
+    {{ macros.form(g) }}
+    {{ macros.footer() }}

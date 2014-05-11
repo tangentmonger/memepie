@@ -1,0 +1,31 @@
+{% import 'macros.htm' as macros %}
+
+{{ macros.header() }}
+{{ macros.topmatter() }}
+
+    <div>
+       <ol> 
+        <li>Think of a well-known meme or <a href="http://knowyourmeme.com/memes/snowclones">snowclone</a>.
+        <li>Replace one or more crucial words with an asterisk.
+        <li>Hit Go.
+    </ol>
+    <p>You'll get a pie chart of all the ways that phrase was used recently on Twitter.
+
+        You can click on a segment to remove it from the query.<p/>
+        <p>Try some examples:</p>
+        	<ul>
+				<li><a href="memepie.htm?meme=*+is+my+middle+name">* is my middle name</a></li>
+				<li><a href="memepie.htm?meme=the+internet+is+a+*+place">the internet is a * place</a></li>
+				<li><a href="memepie.htm?meme=the+*+is+a+*+place">the * is a * place</a></li>
+				<li><a href="memepie.htm?meme=I'm+not+*+but">I'm not * but</a></li>
+				<li><a href="memepie.htm?meme=one+does+not+simply+*+into+*">one does not simply * into *</a></li>
+				<li><a href="memepie.htm?meme=not+sure+if+*+or+just+*">not sure if * or just *</a></li>
+
+
+			</ul>
+	
+
+    </div>
+
+{{ macros.form(g) }}
+{{ macros.footer() }}

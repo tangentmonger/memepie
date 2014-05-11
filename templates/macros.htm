@@ -1,0 +1,38 @@
+{% macro header() -%}
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+    <head>
+        <title>meme pie</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+
+{%- endmacro %}
+
+{% macro topmatter() -%}
+    </script>
+
+    </head>
+    <body>
+        <div id="wrap"><div id="header"><a href="/"><img src="{{ url_for('static', filename='memepie.jpg') }}" class="imagelink"/></a></div>
+
+{%- endmacro %}
+
+{% macro form(g) -%}
+    <div align="center"><form name="input" action="" method="get">meme: <input type="text" name="meme" size="50" value="{{g.clean_query}}"/><input type="submit" value="Go" />
+        </form></div>
+
+{%- endmacro %}
+
+{% macro tweetThis(g) -%}
+
+	<p><a href='http://twitter.com/home?{{g.tweet_content}}'><img src={{ url_for('static', filename='twitter-logo.png') }} class='imagelink' height='20px' width='20px'> tweet this</a></p>
+{%- endmacro %}
+
+
+{% macro footer() -%}
+        <div id="footer"><p><a href="/about/">about</a></p><p><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/2.0/uk/"><img alt="Creative Commons License" class="imagelink" src="http://i.creativecommons.org/l/by-nc-sa/2.0/uk/80x15.png" /></p></a></div></div>
+    </body>
+</html>
+
+{%- endmacro %}
+
+

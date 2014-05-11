@@ -25,4 +25,6 @@ class Meme:
         temp = re.sub(' +', ' ', temp.strip())
         return temp
 
-
+    def get_parts(self):
+        #return a list of the parts of the meme
+        return [x.strip() for x in self.get_body().split("*")]
