@@ -4,6 +4,7 @@ MarkupSafe==0.23
 TwitterSearch==0.78.4
 Werkzeug==0.9.4
 astroid==1.1.1
+gunicorn==18.0
 itsdangerous==0.24
 logilab-common==0.61.0
 oauthlib==0.6.1
