@@ -10,14 +10,10 @@ import datetime
 class Twitter:
     """Interface to Twitter search API"""
 
-    #resource_url = "https://api.twitter.com/1.1/search/tweets.json?"
-    queries_logfile = "queries.log"
-    errors_logfile = "errors.log"
-
     def get_sources(self, meme, number):
-        with open(self.queries_logfile, 'a') as log:
-            print(datetime.datetime.now().strftime('%d/%m/%Y %H:%M'), file=log)
-            print(" ".join([meme.get_body(), meme.get_exceptions()]), file=log, end='\n')
+            
+        #stdout available through Heroku logs
+        print(" ".join([meme.get_body(), meme.get_exceptions()]))
 
         sources = []
         try:
@@ -45,10 +41,7 @@ class Twitter:
                 retries += 1
 
         except TwitterSearchException as e:
-            with open(self.errors_logfile, 'a') as log:
-                print(datetime.datetime.now().strftime('%d/%m/%Y %H:%M'), file=log)
-                print(" ".join([meme.get_body(), meme.get_exceptions()]), file=log, end='\n')
-                print(e, file=log, end='\n')
+            print(e, file=log, end='\n')
 
         return sources
 
