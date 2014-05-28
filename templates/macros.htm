@@ -1,4 +1,4 @@
-{% macro header() -%}
+!--{% macro header() -%}
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
     <head>
@@ -17,7 +17,7 @@
 {%- endmacro %}
 
 {% macro form(g) -%}
-    <div align="center"><form name="input" action="" method="get">meme: <input type="text" name="meme" size="50" value="{{g.clean_query}}"/><input type="submit" value="Go" />
+    <div align="center"><form name="input" action="/memepie.htm" method="get">meme: <input type="text" name="meme" size="50" value="{{g.clean_query}}"/><input type="submit" value="Go" />
         </form></div>
 
 {%- endmacro %}
