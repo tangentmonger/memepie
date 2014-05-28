@@ -9,9 +9,24 @@ source venv/bin/activate
 Install packages:
 pip install Flask
 pip install TwitterSearch
+...
+pip freeze > requirements.txt
+
 
 Test locally:
 foreman start
 (uses Procfile to determine what to do. Point browser at 0.0.0.0:5000 to see results)
 
+Push to Heroku:
+git push heroku master
 
+add Twitter API secrets as Heroku config variables
+
+Problems?
+heroku ps
+heroku restart
+heroku logs
+
+"No such app as ..."
+git remote rm heroku
+heroku create
