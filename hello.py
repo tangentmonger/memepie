@@ -10,12 +10,12 @@ myapp = Flask(__name__)
 
 #app.debug = True
 
-@app.route('/')
-@app.route('/intro.htm')
+@myapp.route('/')
+@myapp.route('/intro.htm')
 def intro():
     return render_template("intro.htm") #looks in templates/
  
-@app.route('/memepie.htm', methods=['GET'])
+@myapp.route('/memepie.htm', methods=['GET'])
 def memepie():
     if 'meme' in request.values:
         meme = Meme(request.values['meme'])
