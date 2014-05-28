@@ -39,6 +39,6 @@ def memepie():
             return render_template("error.htm")
 
 @myapp.route('/about.htm')
-def intro():
+def about():
     return render_template("about.htm") #looks in templates/
  
