@@ -5,7 +5,7 @@ from twitter import Twitter
 from parser import Parser
 from gchart import GChart
 
-app = Flask(__name__)
+#app = Flask(__name__)
 #app.debug = True
 
 @app.route('/')
