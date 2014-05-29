@@ -22,4 +22,4 @@ class Parser():
     def _format_regex(cls, meme):
         """Generate a regex from a Meme"""
         #assumes a valid meme
-        return re.sub(r'\*', '([\\w\'\\-]+)', meme.get_body())
+        return re.sub('\*', '([\\w\'\\-]+)', meme.get_body())
