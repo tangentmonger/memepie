@@ -2,13 +2,12 @@ from flask import Flask, render_template, request, g
 import os
 from meme import Meme
 from twitter import Twitter
-from parser import Parser
+from src.parser import Parser #module name shadowing :(
 from gchart import GChart
 
 
 myapp = Flask(__name__)
-
-#app.debug = True
+myapp.debug = True
 
 @myapp.route('/')
 @myapp.route('/intro.htm')

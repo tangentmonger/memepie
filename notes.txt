@@ -30,3 +30,6 @@ heroku logs
 "No such app as ..."
 git remote rm heroku
 heroku create
+
+See what people use it for
+heroku logs --source app

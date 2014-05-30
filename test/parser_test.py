@@ -1,8 +1,8 @@
 import unittest
-from parser import Parser
 from meme import Meme
 from result import Result
 from source import Source
+from src.parser import Parser #module name shadowing :(
 
 class ParserTest(unittest.TestCase):
 

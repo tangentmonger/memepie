@@ -1,1 +1,1 @@
-web: gunicorn --pythonpath 'src' src.hello:myapp
+web: gunicorn --pythonpath 'src' hello:myapp
