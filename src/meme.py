@@ -23,6 +23,16 @@ class Meme:
         something sensible left after parsing"""
         return re.match(r'^[^*]*\*[^*]*$', self.get_body()) is not None
 
+    def get_problem(self):
+        """Try to diagnose problem with an invalid meme"""
+        extracted_meme = self.get_clean_meme()
+        error = "looks fine"
+        if '*' not in extracted_meme:
+            error = "has no wildcard (*)"
+        elif extracted_meme.count('*') > 1:
+            error = "has too many wildcards (*)"
+        return error
+
     def get_clean_meme(self):
         """Remove anything weirdlooking from the query.
         Allowed: alphanumeric, space, hyphen, asterisk, plus, apostrophe

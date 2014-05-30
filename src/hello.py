@@ -35,6 +35,8 @@ def memepie():
             #first_word_source_list = result.get_source_list(result.get_list()[0][0]) 
             return render_template("memepie.htm")
         else:
+            g.clean_query = meme.get_clean_meme() #our understanding of meme
+            g.error_message = meme.get_problem()
             return render_template("error.htm")
 
 @myapp.route('/about.htm')

@@ -31,10 +31,12 @@ class MemeTest(unittest.TestCase):
     def test_invalid_meme_is_invalid(self):
         m = Meme("nothing here")
         self.assertFalse(m.is_valid())
+        self.assertEqual(m.get_problem(), "has no wildcard (*)")
 
     def test_two_stars_is_invalid(self):
         m = Meme("* into *")
         self.assertFalse(m.is_valid())
+        self.assertEqual(m.get_problem(), "has too many wildcards (*)")
 
     def test_invalid_characters(self):
         m = Meme("ok <>\"(){}[],.")
