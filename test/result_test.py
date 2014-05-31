@@ -29,11 +29,12 @@ class ResultTest(unittest.TestCase):
         
     def test_sources_are_stored(self):
         r = Result()
-        r.add("foo", Source("handle", "what they twote about foo", "twitter.com/linktotweet"))
+        r.add("foo", Source("screen_name", "name", "1234567890", "what they twote about foo"))
         s = r.get_source_list("foo")
-        self.assertEqual(s[0].handle, "handle")
-        self.assertEqual(s[0].text, "what they twote about foo")
-        self.assertEqual(s[0].link, "twitter.com/linktotweet")
+        self.assertEqual(s[0].handle_id, "screen_name")
+        self.assertEqual(s[0].handle_text, "name")
+        self.assertEqual(s[0].status_id, "1234567890")
+        self.assertEqual(s[0].status_text, "what they twote about foo")
 
 if __name__ == "__main__":
     unittest.main()

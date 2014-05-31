@@ -63,7 +63,11 @@
     {% endif %}
 
     {% endfor %}
-    
+
+    {% for source in g.sources %}
+    <a href="http://www.twitter.com/{{source.handle_id}}">@{{source.handle_text}}</a> : <a href="http://www.twitter.com/{{source.handle_id}}/status/{{source.status_id}}">{{source.status_text}}</a><br/>
+    {% endfor %}
+
     {{g.meme_exceptions}}
     </div>
     {{ macros.tweetThis(g) }}

@@ -19,21 +19,21 @@ class ParserTest(unittest.TestCase):
     def test_collates_words(self):
         p = Parser()
         m = Meme("all your * -base")
-        s = [Source("", "all your cake", ""),
-                Source("", "all your cake", ""), 
-                Source("", "all your data", "")]
+        s = [Source("", "", "",  "all your cake"),
+                Source("", "", "", "all your cake"), 
+                Source("", "", "", "all your data")]
         self.assertEqual(p.collate_words(m, s).get_list(), [("cake",2), ("data",1)])
 
     def test_handles_no_matches(self):
         p = Parser()
         m = Meme("all your * -base")
-        s = [Source("", "foo", ""), Source("", "bar", ""), Source("", "baz","")]
+        s = [Source("", "", "", "foo"), Source("", "", "", "bar"), Source("", "", "", "baz")]
         self.assertEqual(p.collate_words(m, s).get_list(), [])
 
     def test_converts_to_lowercase(self):
         p = Parser()
         m = Meme("all your * -base")
-        s = [Source("", "ALL YOUR DATA", "")]
+        s = [Source("", "", "", "ALL YOUR DATA")]
         self.assertEqual(p.collate_words(m, s).get_list(), [("data",1)])
         
 if __name__ == "__main__":

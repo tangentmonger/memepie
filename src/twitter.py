@@ -32,9 +32,10 @@ class Twitter:
             retries = 0
             while len(sources) < number and retries < 5:
                 for tweet in tweets['content']['statuses']:
-                    sources.append(Source(  tweet['user']['name'],
-                                            tweet['text'],
-                                            tweet['id_str']))
+                    sources.append(Source(  tweet['user']['screen_name'],
+                                            tweet['user']['name'],
+                                            tweet['id_str'],
+                                            tweet['text']))
                     #print(tweet['text'])
                     #there's a lot of strange characters coming in here
                 tweets = twitter_search.searchNextResults()

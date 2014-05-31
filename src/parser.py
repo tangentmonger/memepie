@@ -15,7 +15,7 @@ class Parser(object):
         regex = self._format_regex(meme)
         result = Result()
         for source in sources:
-            match = re.search(regex, source.text, re.IGNORECASE)
+            match = re.search(regex, source.status_text, re.IGNORECASE)
             if match:
                 result.add(match.groups()[0].lower(), source)
                 #assumption: there was exactly one match

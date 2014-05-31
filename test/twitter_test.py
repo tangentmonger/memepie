@@ -20,20 +20,21 @@ class TwitterTest(unittest.TestCase):
   
     @mock.patch('TwitterSearch.TwitterSearch')
     def test_gets_sources(self, mock_ts):
-        mock_ts.return_value.searchTweets.return_value = {'content': {'statuses': [{'text': 'all your data', 'id_str': '471774952379932673', 'user': {'name': 'bob'}},{'text': 'all your data', 'id_str': '471774952379932673', 'user': {'name': 'bob'}},{'text': 'all your data', 'id_str': '471774952379932673', 'user': {'name': 'bob'}} ]}}
+        mock_ts.return_value.searchTweets.return_value = {'content': {'statuses': [{'text': 'all your data', 'id_str': '471774952379932673', 'user': {'name': 'bob', 'screen_name': 'bob123'}},{'text': 'all your data', 'id_str': '471774952379932673', 'user': {'name': 'bob', 'screen_name' : 'bob123'}},{'text': 'all your data', 'id_str': '471774952379932673', 'user': {'name': 'bob', 'screen_name' : 'bob123'}} ]}}
         t = Twitter()
         m = Meme("all your * -base")
         self.assertGreater(len(t.get_sources(m, 3)), 0)
     
     @mock.patch('TwitterSearch.TwitterSearch')
     def test_sources_have_content(self, mock_ts):
-        mock_ts.return_value.searchTweets.return_value = {'content': {'statuses': [{'text': 'all your data', 'id_str': '471774952379932673', 'user': {'name': 'bob'}},{'text': 'all your data', 'id_str': '471774952379932673', 'user': {'name': 'bob'}},{'text': 'all your data', 'id_str': '471774952379932673', 'user': {'name': 'bob'}} ]}}
+        mock_ts.return_value.searchTweets.return_value = {'content': {'statuses': [{'text': 'all your data', 'id_str': '471774952379932673', 'user': {'name': 'bob', 'screen_name': 'bob123'}},{'text': 'all your data', 'id_str': '471774952379932673', 'user': {'name': 'bob', 'screen_name' : 'bob123'}},{'text': 'all your data', 'id_str': '471774952379932673', 'user': {'name': 'bob', 'screen_name' : 'bob123'}} ]}}
         t = Twitter()
         m = Meme("all your * -base")
         s = t.get_sources(m, 3).pop()
-        self.assertNotEqual(s.handle, "")
-        self.assertNotEqual(s.text, "")
-        self.assertNotEqual(s.link, "")
+        self.assertNotEqual(s.handle_id, "")
+        self.assertNotEqual(s.handle_text, "")
+        self.assertNotEqual(s.status_id, "")
+        self.assertNotEqual(s.status_text, "")
 
     @unittest.skip("not logging to file, might use syslog later. Needs mocking")
     def test_should_log_query(self):
