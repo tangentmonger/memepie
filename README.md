@@ -3,6 +3,8 @@ memepie
 
 Make pie charts out of memes. http://memepie.herokuapp.com/
 
+Travis CI status: ![Travis CI status](https://travis-ci.org/tangentmonger/memepie.svg?branch=master "Travis CI status")
+
 "Really, this thing is an exercise in despairing for humanity" - Tree
 
 presentation.pdf - an overview with screenshots from the first version.
