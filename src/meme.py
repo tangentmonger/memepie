@@ -11,6 +11,7 @@ class Meme:
     def get_body(self):
         """Extract the body of the meme"""
         #remove exceptions, keep the remaining valid characters
+        #accents are valid characters!
         return re.sub("\\s+\\-[\\w']+", "", self.get_clean_meme())
 
     def get_exceptions(self):
@@ -35,10 +36,10 @@ class Meme:
 
     def get_clean_meme(self):
         """Remove anything weirdlooking from the query.
-        Allowed: alphanumeric, space, hyphen, asterisk, plus, apostrophe
+        Allowed: alphanumeric, space, hyphen, asterisk, plus, apostrophe, accents
         Not allowed: comma, period (Twitter search treats these as separators)
         """
-        temp = re.sub("[^A-Za-z0-9 *+'-]+", "", self.raw_meme)
+        temp = re.sub("[^\\w *+'-]+", "", self.raw_meme)
         temp = re.sub(' +', ' ', temp.strip())
         return temp
 

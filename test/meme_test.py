@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import unittest
 from meme import Meme
 
@@ -41,6 +42,12 @@ class MemeTest(unittest.TestCase):
     def test_invalid_characters(self):
         m = Meme("ok <>\"(){}[],.")
         self.assertEqual(m.get_body(), "ok")
+
+    def test_accents_ok(self):
+        m = Meme("milano é *")
+        self.assertTrue(m.is_valid)
+        self.assertEqual(m.raw_meme, "milano é *")
+        self.assertEqual(m.get_body(), "milano é *")
 
     def test_hypen_is_not_exception(self):
         m = Meme("foo-bar -baz")
